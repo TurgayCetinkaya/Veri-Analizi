@@ -1,0 +1,29 @@
+import matplotlib.pyplot as plt
+
+# Ekran 400x300 boyutlarında tanımlanmıştı
+genislik, yukseklik = 400, 300
+
+# Daire bilgileri
+merkez_x, merkez_y = 200, 150
+yaricap = 50
+
+# Matplotlib figürü oluştur
+fig, ax = plt.subplots(figsize=(6, 4.5))
+ax.set_xlim(0, genislik)
+ax.set_ylim(0, yukseklik)
+
+# Y eksenini ters çevirmek (Koordinat sisteminde)
+ax.invert_yaxis()
+
+# Daireyi çiz
+daire = plt.Circle((merkez_x, merkez_y), yaricap, color='red')
+ax.add_patch(daire)
+
+# Arka plan beyaz olsun
+fig.patch.set_facecolor('white')
+ax.set_facecolor('white')
+
+# Eksenleri kapat
+ax.axis('off')
+plt.title("Matplotlib ile Grafik Uygulaması", fontsize=14)
+plt.show()
