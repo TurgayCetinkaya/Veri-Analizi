@@ -1,0 +1,12 @@
+paralar = [100, 50, 20, 10, 5, 1]  # Kullanılabilecek para birimleri (büyükten küçüğe sıralı)
+miktar = 127                       # Ödenmesi gereken toplam miktar
+kullanilan = []                    # Kullanılan para birimlerini tutan liste
+
+for para in paralar:
+    while miktar >= para:
+        miktar -= para
+        kullanilan.append(para)
+
+print("Kullanılan paralar:", kullanilan)
+     
+Kullanılan paralar: [100, 20, 5, 1, 1]
