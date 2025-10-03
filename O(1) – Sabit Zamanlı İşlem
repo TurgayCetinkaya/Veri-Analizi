@@ -1,0 +1,8 @@
+Veriler ne kadar uzun olursa olsun, listenin ilgili elemanına erişmek sabit zamanda (O(1)) gerçekleşir.
+
+def ilk_elemani_getir(liste):
+    return liste[0]                      # Listenin ilk elemanını döndür (indeks 0)
+
+# Test
+sayilar = [10, 20, 30, 40, 50]           # Örnek bir sayı listesi
+print(ilk_elemani_getir(sayilar))        # Listenin ilk elemanını ekrana yazdırır
