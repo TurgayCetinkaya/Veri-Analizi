@@ -1,0 +1,29 @@
+import networkx as nx               # NetworkX: Grafik yapıları oluşturmak ve analiz etmek için kullanılır
+import matplotlib.pyplot as plt     # Matplotlib: Grafiklerin görsel olarak çizimi için kullanılır
+
+# Yönsüz bir grafik (graph) nesnesi tanımlanıyor
+G = nx.Graph()
+
+# Graf içerisine düğümler (node) ve kenarlar (edge) ekleniyor
+# add_edges_from ile bağlantı kurulan düğümler belirtiliyor
+G.add_edges_from([
+    ('A', 'B'), ('A', 'C'),
+    ('B', 'D'), ('B', 'E'),
+    ('C', 'F'), ('E', 'F')
+])
+
+# Grafik çizimi için şekil boyutu ayarlanıyor (8x6 inç)
+plt.figure(figsize=(8, 6))
+
+# Graf çizimi
+nx.draw(G, with_labels=True, node_color='lightblue', node_size=1500, font_size=14)
+# with_labels=True -> Düğümlerin etiketleri (A, B, C...) gösterilecek
+# node_color='lightblue' -> Düğümlerin rengi açık mavi
+# node_size=1500 -> Düğüm boyutu
+# font_size=14 -> Etiket yazı tipi boyutu
+
+# Grafik başlığı ekleniyor
+plt.title("Yönsüz Grafik Yapısı", fontsize=16)
+
+# Grafik görselleştiriliyor
+plt.show()
