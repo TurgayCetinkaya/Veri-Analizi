@@ -1,0 +1,24 @@
+Listenin tüm elemanlarını dolaşıyoruz, eleman sayısı arttıkça işlem süresi de doğru orantılı artar → O(n)
+
+import time
+
+def tum_elemanlari_yaz(liste):
+    baslangic = time.time()                    # İşlem süresi ölçümü için başlangıç zamanı alınır
+
+    for eleman in liste:                       # Listedeki her bir eleman dolaşılır
+        print(eleman)                          # Eleman ekrana yazdırılır
+
+    bitis = time.time()                        # İşlem süresi ölçümü için bitiş zamanı alınır
+    sure = bitis - baslangic
+    print("Toplam işlem süresi:" , round(sure, 6) , " saniye")  # Süre ekrana yazdırılır
+    # round(sure, 6) fonksiyonu ile sayının virgülden sonra 6 basamağına kadar yazılmaktadır.
+
+# Test
+sayilar = [1, 2, 3, 4]      # Örnek bir sayı listesi
+tum_elemanlari_yaz(sayilar)                    # Listedeki tüm sayıları ve işlem süresini yazdırır
+     
+1
+2
+3
+4
+Toplam işlem süresi: 0.000228  saniye
