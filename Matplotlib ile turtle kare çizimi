@@ -1,0 +1,32 @@
+import turtle
+from pyvirtualdisplay import Display # Display sınıfını içe aktarıyoruz
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Başlangıç konumu ve açı
+x, y = [0], [0]
+açı = 0  # İlk yön sağa (0 derece)
+
+# Kalemin hareketlerini tanımla (turtle.forward ve turtle.right(90) karşılığı)
+uzunluk = 100
+
+# 4 kenarlı bir şekil (örneğin kare) çizmek için döngü
+for i in range(4):
+    # Son konuma göre ileri doğru yeni nokta hesaplanır
+    x_son = x[-1] + uzunluk * np.cos(np.radians(açı))
+    y_son = y[-1] + uzunluk * np.sin(np.radians(açı))
+
+    # Hesaplanan yeni noktalar listeye eklenir
+    x.append(x_son)
+    y.append(y_son)
+
+    # Sağa doğru 90 derece dönüş yapılır
+    açı -= 90
+
+# Grafik çizimi
+plt.figure(figsize=(5,5))
+plt.plot(x, y, marker='o', color='blue')
+plt.title("Matplotlib ile Turtle Kare Çizimi")
+plt.axis('equal')
+plt.grid(True)
+plt.show()
