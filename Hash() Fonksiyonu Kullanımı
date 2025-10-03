@@ -1,0 +1,13 @@
+# hash() fonksiyonu, immutable (değiştirilemez) bir string için bir hash değeri üretir
+print(hash("Ali"))       # 7282652384841270071 çıktısıdır.
+print(hash(42))          # hash() fonksiyonu bir integer (tam sayı) için de çalışır
+
+# hash() fonksiyonu, mutable (değiştirilebilir) bir veri tipi olan list için çalışmaz
+try:
+    print(hash([1, 2, 3]))    # Liste hashlenemez, çünkü elemanları değiştirilebilir
+except TypeError as e:
+    print("Hata:", e)         # Hata çıktısı: unhashable type: 'list'
+     
+7379343315356946677
+42
+Hata: unhashable type: 'list'
