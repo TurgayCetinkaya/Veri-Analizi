@@ -1,0 +1,38 @@
+import networkx as nx                 # NetworkX kütüphanesi: grafik oluşturma ve analiz işlemleri için
+import matplotlib.pyplot as plt       # Matplotlib kütüphanesi: görsel çizim için
+
+# Yönlü bir grafik (Directed Graph) nesnesi oluşturuluyor
+G = nx.DiGraph()  # DiGraph: Directional Graph, yani kenarların yönü önemlidir
+
+# Grafik içerisine yönlü kenarlar ekleniyor
+# Örneğin ('A', 'B') ifadesi A → B yönünde bir bağlantıyı ifade eder
+G.add_edges_from([
+    ('A', 'B'),   # A'dan B'ye ok var
+    ('A', 'C'),   # A'dan C'ye ok var
+    ('B', 'D'),   # B'den D'ye ok var
+    ('C', 'E'),   # C'den E'ye ok var
+    ('D', 'F'),   # D'den F'ye ok var
+    ('E', 'F')    # E'den F'ye ok var
+])
+
+# Grafik çizimi için konumlar belirleniyor (spring layout, yay benzeri yerleşim)
+plt.figure(figsize=(8, 6))             # Grafik boyutu
+pos = nx.spring_layout(G)             # Düğümlerin konumlarını belirleyen algoritma (estetik görünüm sağlar)
+
+# Grafik çizimi yapılır
+nx.draw(
+    G, pos,
+    with_labels=True,                 # Düğüm isimleri (A, B, C...) yazılsın
+    node_size=1500,                   # Düğüm boyutu
+    node_color='lightcoral',          # Düğüm rengi
+    font_size=14,                     # Yazı tipi boyutu
+    arrows=True,                      # Oklar gösterilsin
+    arrowstyle='->',                  # Ok stili
+    arrowsize=20                      # Ok boyutu
+)
+
+# Başlık eklenir
+plt.title("Yönlü Graf (Directed Graph)", fontsize=16)
+
+# Grafik gösterilir
+plt.show()
