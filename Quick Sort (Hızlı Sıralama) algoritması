@@ -1,0 +1,20 @@
+def quick_sort(liste):
+    # Eğer listenin uzunluğu 1 veya 0 ise zaten sıralıdır, direkt döndür
+    if len(liste) <= 1:
+        return liste
+    else:
+        deger = liste[0]  # deger olarak listenin ilk elemanı seçilir
+
+        # deger'den küçük veya eşit elemanlar sol tarafa ayrılır
+        sol = [x for x in liste[1:] if x <= deger]
+
+        # deger'den büyük elemanlar sağ tarafa ayrılır
+        sag = [x for x in liste[1:] if x > deger]
+
+        # Sol + deger + Sağ birleşimiyle sıralı liste döndürülür
+        return quick_sort(sol) + [deger] + quick_sort(sag)
+
+# Fonksiyonu örnek bir liste ile çalıştır ve sonucu yazdır
+print(quick_sort([10, 7, 8, 9, 1, 5]))
+     
+[1, 5, 7, 8, 9, 10]
