@@ -1,0 +1,20 @@
+def selection_sort(liste):
+    # Dış döngü: Her eleman için işlem yapılır
+    for i in range(len(liste)):
+        min_idx = i  # Şu anki turda minimum değerin indeksini saklar
+
+        # İç döngü: i'den sonra kalan elemanlar taranır
+        for j in range(i + 1, len(liste)):
+            # Daha küçük bir eleman bulunursa, onun indeksini güncelle
+            if liste[min_idx] > liste[j]:
+                min_idx = j
+
+        # En küçük elemanla i. elemanın yerini değiştir
+        liste[i], liste[min_idx] = liste[min_idx], liste[i]
+
+    return liste  # Sıralanmış listeyi döndür
+
+# Fonksiyonu örnek liste ile çalıştır ve sonucu yazdır
+print(selection_sort([64, 25, 12, 22, 11]))
+     
+[11, 12, 22, 25, 64]
