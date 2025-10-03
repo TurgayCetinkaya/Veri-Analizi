@@ -1,0 +1,43 @@
+# Binary Search (İkili Arama) algoritması
+def ikili_arama(liste, hedef):
+    alt_sinir = 0                             # Aramanın başlayacağı alt sınır
+    ust_sinir = len(liste) - 1                # Aramanın biteceği üst sınır
+
+    while alt_sinir <= ust_sinir:             # Alt sınır üst sınırı geçmediği sürece döngü devam eder
+        orta = (alt_sinir + ust_sinir) // 2   # Ortadaki eleman hesaplanır
+
+        if liste[orta] == hedef:              # Aranan eleman bulunduysa indeks döndürülür
+            return orta
+        elif liste[orta] < hedef:             # Aranan eleman ortadakinden büyükse sağa kay
+            alt_sinir = orta + 1
+        else:                                 # Aranan eleman ortadakinden küçükse sola kay
+            ust_sinir = orta - 1
+
+    return -1                                 # Eleman bulunamadıysa -1 döndürülür
+
+# Örnek sıralı sayı listesi
+sayilar = [1, 3, 5, 7, 9, 11, 13]
+hedef_sayi = int(input("Listeden aranacak eleman bilgisini giriniz!!"))
+
+# Zaman ölçümünün başlangıcı
+baslangic = time.time()
+
+# Arama işlemi yapılır
+sonuc = ikili_arama(sayilar, hedef_sayi)
+
+# Arama sonucu yazdırılır
+if sonuc != -1:
+    print(hedef_sayi, "sayısı listenin", sonuc , ". indeksinde bulundu.")
+else:
+    print(hedef_sayi, " sayı listesinde bulunamadı.")
+
+# Zaman ölçümünün bitişi
+bitis = time.time()
+sure = bitis - baslangic
+
+# Toplam işlem süresi yazdırılır
+print("Toplam işlem süresi:", round(sure, 6), "saniye")
+     
+Listeden aranacak eleman bilgisini giriniz!!9
+9 sayısı listenin 4  . indeksinde bulundu.
+Toplam işlem süresi: 0.000249 saniye
