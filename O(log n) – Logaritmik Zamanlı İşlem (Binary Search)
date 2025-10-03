@@ -1,0 +1,24 @@
+Her adımda arama alanı yarıya indiriliyor. Yani işlem süresi giriş boyutunun logaritmasına bağlıdır → O(log n)
+Verilen sayilar listesinde Binary Search (İkili Arama) algoritmasını kullanarak, 9 sayısının listedeki indeksinin bulunmasıdır.
+
+def ikili_arama(liste, hedef):
+    alt_sinir = 0                             # Aramanın başlayacağı alt sınır (listenin başı)
+    ust_sinir = len(liste) - 1                # Aramanın biteceği üst sınır (listenin sonu)
+
+    while alt_sinir <= ust_sinir:             # Alt sınır üst sınırı geçene kadar devam et
+        orta = (alt_sinir + ust_sinir) // 2   # Listenin ortasındaki elemanın indeksi
+
+        if liste[orta] == hedef:              # Ortadaki eleman hedefe eşitse, hedef bulundu
+            return orta
+        elif liste[orta] < hedef:             # Ortadaki eleman hedeften küçükse, aramayı sağ yarıya kaydır
+            alt_sinir = orta + 1
+        else:                                 # Ortadaki eleman hedeften büyükse, aramayı sol yarıya kaydır
+            ust_sinir = orta - 1
+
+    return -1                                 # Hedef eleman listede yoksa -1 döndür
+
+# Test
+sayilar = [1, 3, 5, 7, 9, 11, 13]              # Sıralı bir sayı listesi
+print(ikili_arama(sayilar, 9))                # 9 sayısının listede hangi indekste olduğunu bulur
+     
+4
