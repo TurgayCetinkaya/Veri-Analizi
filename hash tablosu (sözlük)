@@ -1,0 +1,8 @@
+ogrenciler = {
+    "1001": "Ali",
+    "1002": "Ayşe",
+    "1003": "Mehmet"
+}
+
+# Anahtar ile hızlı erişim
+print(ogrenciler["1002"])  # Çıktı: Ayşe
