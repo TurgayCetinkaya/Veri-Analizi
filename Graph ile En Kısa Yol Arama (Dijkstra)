@@ -1,0 +1,10 @@
+import networkx as nx
+
+G = nx.DiGraph()
+G.add_weighted_edges_from([
+    ('A', 'B', 1), ('B', 'C', 2), ('A', 'C', 4)])
+
+yol = nx.dijkstra_path(G, source='A', target='C')
+print("En kısa yol:", yol)
+     
+En kısa yol: ['A', 'B', 'C']
