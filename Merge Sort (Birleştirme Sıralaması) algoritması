@@ -1,0 +1,38 @@
+Ana sıralama fonksiyonu
+def merge_sort(liste):
+    # Listenin boyutu 1 veya daha azsa, zaten sıralıdır
+    if len(liste) <= 1:
+        return liste
+
+    # Liste ortadan ikiye bölünür
+    orta = len(liste) // 2
+    sol = merge_sort(liste[:orta])   # Sol yarısı özyinelemeli olarak sıralanır
+    sag = merge_sort(liste[orta:])   # Sağ yarısı özyinelemeli olarak sıralanır
+
+    # İki yarı birleştirilerek sıralı hale getirilir
+    return merge(sol, sag)
+
+# Birleştirme işlemi: iki sıralı listeyi tek sıralı listeye çevirir
+def merge(sol, sag):
+    sonuc = []   # Sonuç listesi (sıralı)
+    i = j = 0    # İki listenin de indeksleri
+
+    # Elemanlar karşılaştırılarak sırayla eklenir
+    while i < len(sol) and j < len(sag):
+        if sol[i] < sag[j]:
+            sonuc.append(sol[i])  # Daha küçük olanı ekle
+            i += 1
+        else:
+            sonuc.append(sag[j])
+            j += 1
+
+    # Geriye kalan elemanlar varsa doğrudan sona eklenir
+    sonuc.extend(sol[i:])  # Sol liste kalanı
+    sonuc.extend(sag[j:])  # Sağ liste kalanı
+
+    return sonuc  # Tamamen sıralanmış liste döndürülür
+
+# Fonksiyon, örnek liste ile çalıştırılır ve sonucu ekrana yazdırılır
+print(merge_sort([38, 27, 43, 3, 9, 82, 10]))
+     
+[3, 9, 10, 27, 38, 43, 82]
