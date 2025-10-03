@@ -1,0 +1,18 @@
+def insertion_sort(liste):
+    # İlk eleman zaten sıralı kabul edilir, 1. indexten başlıyoruz
+    for i in range(1, len(liste)):
+        anahtar = liste[i]      # Sıradaki eleman (yerleştirilecek değer)
+        j = i - 1               # Anahtarın solundaki elemanların başlangıç indeksi
+
+        # Sol taraftaki sıralı elemanları gezeriz ve anahtardan büyük olanları sağa kaydırırız
+        while j >= 0 and anahtar < liste[j]:
+            liste[j + 1] = liste[j]  # Büyük elemanı bir sağa kaydır
+            j -= 1                   # Bir sola geç
+
+        # Anahtarı uygun pozisyona yerleştir
+        liste[j + 1] = anahtar
+
+    return liste  # Sıralanmış listeyi döndür
+
+# Fonksiyonu örnek listeyle çalıştır ve sonucu yazdır
+print(insertion_sort([12, 11, 13, 5, 6]))
