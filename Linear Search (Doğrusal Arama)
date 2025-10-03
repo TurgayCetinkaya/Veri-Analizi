@@ -1,0 +1,11 @@
+def linear_search(liste, hedef):
+    for i in range(len(liste)):
+        if liste[i] == hedef:
+            return i  # Bulunduğunda indeks döndürülür
+    return -1  # Bulunamazsa -1 döner
+
+# Örnek kullanım
+veri = [10, 23, 45, 70, 11, 15]
+print(linear_search(veri, 70))  # Çıktı: 3
+     
+3
