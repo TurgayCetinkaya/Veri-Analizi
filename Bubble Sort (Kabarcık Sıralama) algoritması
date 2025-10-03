@@ -1,0 +1,20 @@
+def bubble_sort(liste):
+    n = len(liste)  # Listenin uzunluğu alınır
+
+    # Dış döngü: Tüm elemanlar için tekrar yapılır
+    for i in range(n):
+
+        # İç döngü: Her defasında en büyük eleman sona yerleşir
+        for j in range(0, n - i - 1):
+
+            # Eğer soldaki eleman sağdakinden büyükse yer değiştir
+            if liste[j] > liste[j + 1]:
+                # Python'da eleman yer değiştirme yöntemi
+                liste[j], liste[j + 1] = liste[j + 1], liste[j]
+
+    return liste  # Sıralı listeyi döndür
+
+# Fonksiyonu örnek liste ile çalıştır ve sonucu yazdır
+print(bubble_sort([64, 34, 25, 12, 22, 11, 90]))
+     
+[11, 12, 22, 25, 34, 64, 90]
