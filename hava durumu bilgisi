@@ -1,0 +1,40 @@
+import requests
+
+def hava_durumu_bilgisi_al(sehir, api_anahtari):
+    # Doğru URL ve API endpointi (ücretsiz sürüm için)
+    base_url = "https://api.openweathermap.org/data/2.5/weather"
+
+    # API'ye gönderilecek parametreler (şehir adı, API anahtarı ve metrik sistem)
+    params = {"q": sehir, "appid": api_anahtari, "units": "metric"}
+
+    try:
+        # API'ye GET isteği gönderme
+        response = requests.get(base_url, params=params)
+        response.raise_for_status()  # Hata durumunda isteği durdur
+
+        # Cevaptan JSON verisini alma
+        hava_durumu = response.json()
+
+        # JSON verisini işleme örnekleri
+        print("Hava Durumu Bilgisi - " + sehir)
+        print("Sıcaklık: " + str(hava_durumu['main']['temp']) + " °C")
+        print("Nem Oranı: " + str(hava_durumu['main']['humidity']) + "%")
+        print("Açıklama: " + hava_durumu['weather'][0]['description'])
+
+    except requests.exceptions.RequestException as err:
+        print("Hata oluştu: " + str(err))
+
+if __name__ == "__main__":
+    # Kullanıcıdan şehir adı ve API anahtarı alınması
+    sehir_adı = input("Hava durumu bilgisini almak istediğiniz şehir adını girin: ")
+    api_key = input("OpenWeatherMap API anahtarınızı girin: ") # API KEY sizin OpenWeatherMap üyeliğiniz sonrasında oluşturulan anahtardır.
+
+    # Hava durumu bilgilerini alma fonksiyonunu çağırma
+    hava_durumu_bilgisi_al(sehir_adı, api_key)
+     
+Hava durumu bilgisini almak istediğiniz şehir adını girin: istanbul
+OpenWeatherMap API anahtarınızı girin: 1b849b527d42357659b98bb5ff2f8612
+Hava Durumu Bilgisi - istanbul
+Sıcaklık: 9.98 °C
+Nem Oranı: 71%
+Açıklama: broken clouds
