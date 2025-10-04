@@ -1,0 +1,28 @@
+tree = ET.parse(urlopen(link_bilgisi))
+
+root = tree.getroot()
+
+liste = []
+
+liste.append(root.findall('Currency'))
+     
+
+for i in liste[0]:
+  currencyCode = i.get('Kod')
+  banknoteBuying = i.find("BanknoteSelling").text
+  banknoteSelling = i.find("BanknoteBuying").text
+
+  if currencyCode == "USD":
+    print(currencyCode, banknoteBuying, banknoteSelling)
+    result = float(banknoteBuying) - float(banknoteSelling)
+    print("USD Banka Alış Satış Arasındaki Kur Farkı ->", result)
+
+  if currencyCode == "EUR":
+    print(currencyCode, banknoteBuying, banknoteSelling)
+    result = float(banknoteBuying) - float(banknoteSelling)
+    print("EUR Banka Alış Satış Arasındaki Kur Farkı ->", result)
+     
+USD 36.6557 36.5094
+USD Banka Alış Satış Arasındaki Kur Farkı -> 0.14630000000000365
+EUR 39.8154 39.6565
+EUR Banka Alış Satış Arasındaki Kur Farkı -> 0.1588999999999956
