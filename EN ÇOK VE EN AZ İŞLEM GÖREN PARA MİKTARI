@@ -1,0 +1,11 @@
+# Verileri alış-satış farkına göre büyükten küçüğe sıralıyoruz
+df_sorted = df.sort_values(by='Fark', ascending=False)
+
+# Pandas DataFrame verilerini görselleştirme (Sıralanmış Hali)
+plt.figure(figsize=(10, 6))
+plt.bar(df_sorted['Para Birimi'], df_sorted['Fark'], color='blue')
+plt.xlabel('Para Birimi')
+plt.ylabel('Alış-Satış Farkı')
+plt.title('En Fazla ve En Az İşlem Gören Para Birimleri')
+plt.xticks(rotation=45)  # Para birimi isimlerinin daha iyi görünmesi için
+plt.show()
