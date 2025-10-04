@@ -1,0 +1,7 @@
+# CSV dosyasına kaydetme
+
+df_sorted.to_csv('kur_verileri_siralama-30042025.csv', index=False)
+
+print("Veriler 'kur_verileri_siralama-30042025.csv' dosyasına kaydedildi.")
+     
+Veriler 'kur_verileri_siralama-30042025.csv' dosyasına kaydedildi.
